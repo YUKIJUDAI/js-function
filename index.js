@@ -150,31 +150,6 @@ document.addEventListener(
 );
 
 /**
- * 判断是否是电脑端
- */
-function IsPC() {
-    var userAgentInfo = navigator.userAgent,
-        Agents = ["Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod"],
-        flag = true;
-    for (var v = 0; v < Agents.length; v++) {
-        if (userAgentInfo.indexOf(Agents[v]) > 0) {
-            flag = false;
-            break;
-        }
-    }
-    return flag;
-}
-
-/**
- * 判断微信浏览器，安卓，IOS
- */
-var u = navigator.userAgent;
-var ua = u.toLowerCase();
-var isAndroid = u.indexOf("Android") > -1 || u.indexOf("Adr") > -1; //android
-var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios
-var isWeixin = ua.match(/MicroMessenger/i) == "micromessenger"; //微信浏览器
-
-/**
  * jquery 表单序列化直接返回json扩展
  */
 !(function(t) {
