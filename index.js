@@ -1,15 +1,15 @@
 /**
  * 观察者模式
  */
-var Observer = function() {
+var Observer = function () {
     var _messages = {};
     var _this = this;
     return {
-        regist: function(type, fn) {
+        regist: function (type, fn) {
             typeof _messages[type] === "undefined" ? (_messages[type] = [fn]) : _messages[type].push(fn);
             return _this;
         },
-        fire: function(type, args) {
+        fire: function (type, args) {
             if (!_messages.hasOwnProperty(type)) return;
             var events = {
                 type: type,
@@ -19,7 +19,7 @@ var Observer = function() {
                 _messages[type][i].call(this, events.args);
             }
         },
-        remove: function(type, fn) {
+        remove: function (type, fn) {
             if (_messages[type] instanceof Array) {
                 for (var i = _messages[type].length - 1; i >= 0; i--) {
                     _messages[type][i] === fn && _messages[type].splice(i, 1);
@@ -66,7 +66,7 @@ function Ajax(type, url, data, success, failed) {
         xhr.send(data);
     }
     // 处理返回数据
-    xhr.onreadystatechange = function() {
+    xhr.onreadystatechange = function () {
         if (xhr.readyState == 4) {
             if (xhr.status == 200) {
                 success(xhr.responseText);
@@ -113,7 +113,7 @@ function GetSlideDirection(startX, startY, endX, endY) {
 var startX, startY;
 document.addEventListener(
     "touchstart",
-    function(ev) {
+    function (ev) {
         startX = ev.touches[0].pageX;
         startY = ev.touches[0].pageY;
     },
@@ -121,7 +121,7 @@ document.addEventListener(
 );
 document.addEventListener(
     "touchend",
-    function(ev) {
+    function (ev) {
         var endX, endY;
         endX = ev.changedTouches[0].pageX;
         endY = ev.changedTouches[0].pageY;
@@ -152,29 +152,29 @@ document.addEventListener(
 /**
  * jquery 表单序列化直接返回json扩展
  */
-!(function(t) {
-    t.fn.values = function(e) {
+!(function (t) {
+    t.fn.values = function (e) {
         var i = t(this)
             .find(":input")
             .get();
         return "object" != typeof e
             ? ((e = {}),
-              t.each(i, function() {
-                  this.name &&
-                      !this.disabled &&
-                      (this.checked || /select|textarea/i.test(this.nodeName) || /text|hidden|password/i.test(this.type)) &&
-                      (e[this.name] = t(this).val());
-              }),
-              e)
-            : (t.each(i, function() {
-                  this.name &&
-                      e[this.name] + "" &&
-                      "undefined" != typeof e[this.name] &&
-                      ("checkbox" == this.type || "radio" == this.type
-                          ? t(this).prop("checked", e[this.name] == t(this).val())
-                          : t(this).val(e[this.name]));
-              }),
-              t(this));
+                t.each(i, function () {
+                    this.name &&
+                        !this.disabled &&
+                        (this.checked || /select|textarea/i.test(this.nodeName) || /text|hidden|password/i.test(this.type)) &&
+                        (e[this.name] = t(this).val());
+                }),
+                e)
+            : (t.each(i, function () {
+                this.name &&
+                    e[this.name] + "" &&
+                    "undefined" != typeof e[this.name] &&
+                    ("checkbox" == this.type || "radio" == this.type
+                        ? t(this).prop("checked", e[this.name] == t(this).val())
+                        : t(this).val(e[this.name]));
+            }),
+                t(this));
     };
 })(jQuery);
 
@@ -183,7 +183,7 @@ document.addEventListener(
  */
 var __extends =
     (this && this.__extends) ||
-    function(d, b) {
+    function (d, b) {
         for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
 
         function __() {
@@ -191,11 +191,11 @@ var __extends =
         }
         d.prototype = b === null ? Object.create(b) : ((__.prototype = b.prototype), new __());
     };
-var Person = (function() {
-    function Person() {}
+var Person = (function () {
+    function Person() { }
     return Person;
 })();
-var person = (function(_super) {
+var person = (function (_super) {
     __extends(person, _super);
 
     function person() {
