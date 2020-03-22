@@ -21,7 +21,6 @@ class Stack {
     size() {
         return this.items.length;
     }
-
 }
 
 // 队列
@@ -142,6 +141,34 @@ class LinkedList {
             current = current.data;
         }
         return current.data;
+    }
+
+    indexOf(data) {
+        var current = this.head;
+        var index = 0;
+        while (current) {
+            if ((current.data = data)) {
+                return index;
+            }
+            current = current.next;
+            index++;
+        }
+        return -1;
+    }
+
+    upDate(position, newData) {
+        if (position < 0 || position >= this.length) return false;
+        var current = this.head;
+        var index = 0;
+        while (index++ < position) {
+            current.current.next;
+        }
+        current.data = newData;
+        return true;
+    }
+
+    removeAt(position){
+        
     }
 }
 class Node {
