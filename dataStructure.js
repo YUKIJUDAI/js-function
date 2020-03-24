@@ -198,12 +198,12 @@ class LinkedList {
         return this.length;
     }
 }
-class Node {
-    constructor(data) {
-        this.data = data;
-        this.next = null;
-    }
-}
+// class Node {
+//     constructor(data) {
+//         this.data = data;
+//         this.next = null;
+//     }
+// }
 
 // 双向链表
 class DoublyLinkList {
@@ -339,13 +339,13 @@ class DoublyLinkList {
         return this.length;
     }
 }
-class Node {
-    constructor(data) {
-        this.data = data;
-        this.prev = null;
-        this.next = null;
-    }
-}
+// class Node {
+//     constructor(data) {
+//         this.data = data;
+//         this.prev = null;
+//         this.next = null;
+//     }
+// }
 
 // 集合
 class Set {
@@ -439,6 +439,16 @@ class HashTable {
         return hashCode % size;
     }
 
+    isPrime(num) {
+        var temp = +Math.sqrt(num);
+        for (var i = 0; i = < temp; i++) {
+            if (num % i === 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     put(key, value) {
         var index = this.hashFunc(key, this.limit);
         var bucket = this.storage[index];
@@ -455,6 +465,11 @@ class HashTable {
         }
         bucket.push([key, value]);
         this.count++;
+
+        if (this.count > this.limit * 0.75) {
+            var newPrime = new getPrime(this.limit * 2);
+            this.resize(newPrime);
+        }
     }
 
     get(key) {
@@ -483,8 +498,11 @@ class HashTable {
             if (item[0] === key) {
                 bucket.splice(i, 1);
                 this.count--;
-                return;
+                if (this.limit > 7 && this.count < this.limit * 0.25
+                    var newPrime = new getPrime(~~(this.limit / 2));
+                this.resize(newPrime);
             }
+            return;
         }
     }
 
@@ -501,5 +519,141 @@ class HashTable {
         this.storage = [];
         this.count = 0;
         this.limit = newLimt;
+
+        for (var i = 0; i < oldStorage.length; i++) {
+            var bucket = oldStorage[i];
+            if (bucket === null) {
+                continue;
+            }
+            for (var j = 0; j < bucket.length; j++) {
+                var item = bucket[j];
+                this.put(item[0], item[1]);
+            }
+        }
+    }
+
+    getPrime(num) {
+        while (!this.isPrime(num)) {
+            num++;
+        }
+        return num;
+    }
+}
+
+// 二叉搜索数
+class BinarySerachTree {
+    root = null;
+
+    insert(key) {
+        var node = new Node(key);
+        if (this.root === null) {
+            this.root = node;
+        } else {
+            this.insertNode(this.root, newNode);
+        }
+    }
+    insertNode(node, newNode) {
+        if (newNode.key < node.key) {
+            if (node.left === null) {
+                node.left = newNode;
+            } else {
+                this.insertNode(node.left, newNode);
+            }
+        } else {
+            if (node.right === null) {
+                node.right = newNode;
+            } else {
+                this.insertNode(node.right, newNode);
+            }
+        }
+    }
+
+    // 先序遍历
+    preOrderTraversal(callback) {
+        this.preOrderTraversalNode(this.node, callback);
+    }
+    preOrderTraversalNode(node, callback) {
+        if (node !== null) {
+            callback(node.key);
+            this.preOrderTraversalNode(node.left, callback);
+            this.preOrderTraversalNode(node.right, callback);
+        }
+    }
+
+    min() {
+        var node = this.root;
+        var key = node.key;
+        while (node !== null) {
+            key = node.key;
+            node = node.left;
+        }
+        return key;
+    }
+
+    max() {
+        var node = this.root;
+        var key = node.key;
+        while (node != null) {
+            key = node.key;
+            node = node.right;
+        }
+        return key;
+    }
+
+    seach(key) {
+        var node = this.root;
+        while (node !== null) {
+            if (key < node.key) {
+                node = node.left;
+            } else if (key > node.key) {
+                node = node.right;
+            } else {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    remove(key) {
+        var current = this.root;
+        var parent = null;
+        var isLeftChild = true;
+
+        while (current.key !== key) {
+            parent = current;
+            if (key < current.key) {
+                isLeftChild = true;
+                current = current.left;
+            } else {
+                isLeftChild = false;
+                current = current.right;
+            }
+            if (current === null) return false;
+        }
+
+        if (current.left === null && current.right = null) {
+            if (current === this.root) {
+                this.root = null;
+            } else {
+                isLeftChild ? parent.left = null : parent.right = null;
+            }
+        } else if (current.right === null || current.left === null) {
+            if (current === this.root) {
+                this.root = isLeftChild ? current.left : current.right;
+            } else {
+                isLeftChild ? parent.left = null : parent.right = null;
+            }
+        } else {
+            
+        }
+
+    }
+
+}
+class Node {
+    constructor(key) {
+        this.key = key;
+        this.left = null;
+        this.right = null;
     }
 }
