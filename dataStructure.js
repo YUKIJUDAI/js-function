@@ -644,9 +644,36 @@ class BinarySerachTree {
                 isLeftChild ? parent.left = null : parent.right = null;
             }
         } else {
-            
+            var successor = this.getSuccessor(current);
+            if (current === this.root) {
+                this.root = successor;
+            } else if (isLeftChild) {
+                parent.left = successor;
+            } else {
+                parent.right = successor;
+            }
+
+            successor.left = current.left;
         }
 
+    }
+    getSuccessor(delNode) {
+        var successor = delNode;
+        var current = delNode.right;
+        var successorParent = delNode;
+
+        while (current !== null) {
+            successorParent = successor;
+            successor = current;
+            current = current.left;
+        }
+
+        if (successor !== delNode.right) {
+            successorParent.left = successor.right;
+            successor.right = delNode.right;
+        }
+
+        return successor;
     }
 
 }
