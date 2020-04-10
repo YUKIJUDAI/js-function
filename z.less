@@ -1,0 +1,120 @@
+//浮动
+.fl(@f:left;) {
+    float: @f;
+    display: inline;
+}
+.fr(@f:right) {
+    float: @f;
+    display: inline;
+}
+//定位
+.rel(@rel:relative) {
+    position: @rel;
+}
+.abs(@abs:absolute) {
+    position: @abs;
+}
+.fix(@fix:fixed) {
+    position: @fix;
+}
+
+.pos-box(@w:500px,@h:400px,@pos:absolute) {
+    width: @w;
+    height: @h;
+    position: @pos;
+    left: 0;
+    top: 0;
+}
+//定位居中
+.pos-box-cc(@w:600px,@h:360px,@pos:absolute) {
+    width: @w;
+    height: @h;
+    position: @pos;
+    left: 50%;
+    top: 50%;
+    margin-left: -@w / 2;
+    margin-top: -@h / 2;
+}
+//布局
+.bc() {
+    margin-left: auto;
+    margin-right: auto;
+}
+.bc-d(@w:500px) {
+    width: @w;
+    .bc();
+}
+.wh(@w) {
+    width: @w;
+    height: @w;
+}
+// 宽度100%
+.w100() {
+    width: 100%;
+}
+//高度100%
+.h100() {
+    height: 100%;
+}
+// 文字垂直居中
+.l-h(@h) {
+    height: @h;
+    line-height: @h;
+}
+//display
+.db() {
+    display: block;
+}
+.di() {
+    display: inline;
+}
+.dib() {
+    display: inline-block;
+}
+.dn() {
+    display: none;
+}
+
+//background
+.bg(@url) {
+    background: url(@url) no-repeat center center;
+    background-size: cover;
+}
+.bg-c(@color) {
+    background-color: @color;
+}
+
+.tl() {
+    text-align: left;
+}
+.tc() {
+    text-align: center;
+}
+.tr() {
+    text-align: right;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    height: 0;
+    font-size: 0;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+//文字省略号
+// @substract单位为%
+.ellipsis-basic() {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    .font-fa();
+}
+.ellipsis(@substract:0) {
+    .ellipsis-basic();
+    width: 100% - @substract;
+}
