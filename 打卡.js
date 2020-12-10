@@ -1,7 +1,7 @@
 //一分钟内产生随机数打卡
 console.log('20秒后开始运行程序');
 setTimeout(() => {
-    // checkTime();
+    checkTime();
     punchClock("下班打卡");
 }, 20000);
 

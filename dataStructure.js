@@ -198,12 +198,6 @@ class LinkedList {
         return this.length;
     }
 }
-// class Node {
-//     constructor(data) {
-//         this.data = data;
-//         this.next = null;
-//     }
-// }
 
 // 双向链表
 class DoublyLinkList {
@@ -339,13 +333,6 @@ class DoublyLinkList {
         return this.length;
     }
 }
-// class Node {
-//     constructor(data) {
-//         this.data = data;
-//         this.prev = null;
-//         this.next = null;
-//     }
-// }
 
 // 集合
 class Set {
@@ -676,11 +663,4 @@ class BinarySerachTree {
         return successor;
     }
 
-}
-class Node {
-    constructor(key) {
-        this.key = key;
-        this.left = null;
-        this.right = null;
-    }
 }
